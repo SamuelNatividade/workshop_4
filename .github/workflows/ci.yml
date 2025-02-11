@@ -1,17 +1,22 @@
 name: ci
 
-on: pull_request
+on: push
 jobs:
     test:
         runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                python-version: [3.11.5, 3.9, 3.11, 3.12]
 
 
         steps:
-            - name: primeira CI
-              run: echo "Hello World"
+            - name: Baixar o repositorio
+              uses: actions/checkout@v4
 
-            - name: o que tem aqui
-              run: echo $(ls)
+            - name: Instalar o Python
+              uses: actions/setup-python@v5
+              with:
+                  python-version: ${{ matrix.python-version }}
 
             - name: qual diretorio
               run: echo $(pwd)
