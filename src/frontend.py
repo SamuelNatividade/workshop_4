@@ -25,3 +25,14 @@ class ExcelValidadorUI:
         else:
             st.success("Validacao concluida com sucesso!")
 
+    def display_save_button(self):
+        return st.button("Salvar no banco de dados")
+    
+    def display_wrong_message(self, message):
+        return st.error('Necessário corrigir a planilha')
+    
+    def display_success_message(self):
+        return st.success('Dados salvos no banco de dados com sucesso!')
+    
+
+
